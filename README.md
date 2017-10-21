@@ -1,5 +1,5 @@
 # Teaching-English
- Teaching-English web dạy tiếng anh cơ bản và nâng cao cho các em học sinh. Trang web sẽ hỗ trợ các em về việc học tiếng anh hàng ngày, từ phát âm cơ bản, luyện ngữ pháp của các cấu trúc câu, luyện tập khả năng nghe tiếng anh qua các video hay bản nhạc tiếng anh, đồng thời cũng sẽ có các bài test ngữ pháp cho các em có thể kiểm tra trình độ của mình sau các bài ngữ pháp.\n
+ Teaching-English web dạy tiếng anh cơ bản và nâng cao cho các em học sinh. Trang web sẽ hỗ trợ các em về việc học tiếng anh hàng ngày, từ phát âm cơ bản, luyện ngữ pháp của các cấu trúc câu, luyện tập khả năng nghe tiếng anh qua các video hay bản nhạc tiếng anh, đồng thời cũng sẽ có các bài test ngữ pháp cho các em có thể kiểm tra trình độ của mình sau các bài ngữ pháp.
  Teaching English sẽ sử dụng PHP với Framework Laravel, cơ sở dữ liệu sẽ sử dụng PHP MySQL, với các chức năng chính để giải quyết cho các vấn đề trên:
   + Phát âm theo phát âm chuẩn.
   + Học ngữ pháp qua hình ảnh hay các câu hỏi ngắn bằng cách chọn các đáp án của câu hỏi.

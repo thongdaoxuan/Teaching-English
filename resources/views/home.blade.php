@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -64,7 +65,7 @@
             }
         </style>
     </head>
-	<body>
+   <!--<body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -91,6 +92,36 @@
                 </div>
             </div>
         </div>
-    </body> 
+    </body> -->
+	<body>
+		aaaaaaaa
+		<div ng-app="myApp" ng-controller="personCtrl">
+
+		First Name: <input type="text" ng-model="firstName"><br>
+		Last Name: <input type="text" ng-model="lastName"><br>
+		<br>
 	
+			<input type="button" ng-click="fullName()">
+		</div>
+
+		<script>
+		var app = angular.module('myApp', []);
+		var sites = {!! json_encode($question->toArray()) !!};
+		app.controller('personCtrl', function($scope) {
+			var i=0;
+			$scope.firstName = sites[i].ques_content;
+			$scope.lastName = sites[i].ques_level;
+			$scope.fullName = function() {
+				i++;
+				if(i<sites.length){
+					$scope.firstName = sites[i].ques_content;
+					$scope.lastName = sites[i].ques_level;
+				}
+				
+				return $scope.firstName + " " + $scope.lastName;
+			};
+		});
+		</script>
+
+	</body>
 </html>

@@ -16,4 +16,8 @@ Route::get('/', function () {
 	//echo Question::all();
 	return view('welcome');
 });
+Route::get('/choose_category', function () {
+	//echo Question::all();
+	return view('choose_category');
+});
 Route::get('home', 'TestController@index');

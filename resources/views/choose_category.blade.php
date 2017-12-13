@@ -18,7 +18,6 @@
 		}
 		.nav li a:hover,.nav li a:visited ,.nav li a:active{
 			    background-color: rgb(20, 147, 209);
-			    
 		}
 
 	</style>
@@ -27,7 +26,6 @@
 
 	 <div class="col-md-12" style="padding: 0px;">
 		<div class="col-md-12" style="background-color: #34b1ee;border-bottom: 1px solid #ccc;">
-			
 			<div class="col-md-3" style="float: left;">
 				<h2 style="float: left;color: #fff;">Teach English</h2>
 			</div>
@@ -48,8 +46,6 @@
 				</ul>
 			</div>
 			<div class="col-md-3 dropdown" style="float: right;padding: 10px;">
-			
-    
 				<a class="btn  dropdown-toggle" type="button" data-toggle="dropdown" href="" style="float: right;margin-right: 5px; padding: 0px 5px;" >
 					<img src="user.png" style="width: 40px; height: 40px;">
 				</a>
@@ -73,7 +69,6 @@
 				<a href="" style="border-radius: 10px;padding: 10px;float: right;border: 1px solid #fff;color: #fff;" data-toggle="modal" data-target="#dangky"><span>Đăng ký</span></a>
 				<div id="dangky" class="modal fade" role="dialog">
 				  	<div class="modal-dialog">
-
 				    <!-- Modal content-->
 					    <div class="modal-content">
 					    	<form class="form-horizontal">

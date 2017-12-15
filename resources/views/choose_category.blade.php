@@ -95,7 +95,6 @@
 									      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
 									    </div>
 									</div>
-									
 						      	</div>
 						      	<div class="modal-footer">
 						      		<button type="submit" class="btn btn-primary">Đăng ký</button>

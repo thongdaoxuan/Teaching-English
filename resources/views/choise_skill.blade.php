@@ -11,26 +11,26 @@
 		a:hover{
 			text-decoration: none;
 		}
-		.list_choose ul li{
-				border: 1px solid #54c4eb;
-			    margin-bottom: 10px;
-   				border-radius: 50px !important;
+		th{
+			background: #1caff6;
+    		color: #fff;
 		}
-		.nav li a:hover,.nav li a:visited ,.nav li a:active{
-			    background-color: rgb(20, 147, 209);
+		th,td{
+			text-align: left;
 		}
-
 	</style>
 </head>
 <body>
 
 	 <div class="col-md-12" style="padding: 0px;">
+	 <!--begin header-->
 		<div class="col-md-12" style="background-color: #34b1ee;border-bottom: 1px solid #ccc;">
+			
 			<div class="col-md-3" style="float: left;">
 				<h2 style="float: left;color: #fff;">Teach English</h2>
 			</div>
 			<div class="col-md-3" style="padding: 15px;">
-				<ul class="nav nav-pills list-inline">
+				<ul class="nav nav-pills">
 					<li >
 						<a href="" style="display: block;color: #fff;padding: 8px 15px;font-weight: bold;font-size: 16px;">Trang chủ</a>
 					</li>
@@ -45,30 +45,11 @@
 					
 				</ul>
 			</div>
-			<div class="col-md-3 dropdown" style="float: right;padding: 10px;">
-				<a class="btn  dropdown-toggle" type="button" data-toggle="dropdown" href="" style="float: right;margin-right: 5px; padding: 0px 5px;" >
-					<img src="resources/assets/images/user.png" style="width: 40px; height: 40px;">
-				</a>
-				<ul class="dropdown-menu" style="left: 42% !important;">
-					<li class="col-md-12">
-						<div class="col-md-12" style="padding: 0px">
-							<div class="col-md-4" style="padding: 0px 5px;">
-								<img src="resources/assets/images/user.png" style="width: 40px; height: 40px;">
-							</div>
-							<div class="col-md-8" style="padding: 0px">
-								<h3 style="margin:0px;">User</h3>
-								<span>Level: 5</span>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-12 divider"></li>
-					<li class="col-md-12">
-						<button type="button" class="btn btn-info btn-xs">Logout</button>
-					</li>
-				</ul>
+			<div class="col-md-3" style="float: right;padding: 10px;">
 				<a href="" style="border-radius: 10px;padding: 10px;float: right;border: 1px solid #fff;color: #fff;" data-toggle="modal" data-target="#dangky"><span>Đăng ký</span></a>
 				<div id="dangky" class="modal fade" role="dialog">
 				  	<div class="modal-dialog">
+
 				    <!-- Modal content-->
 					    <div class="modal-content">
 					    	<form class="form-horizontal">
@@ -95,6 +76,7 @@
 									      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
 									    </div>
 									</div>
+									
 						      	</div>
 						      	<div class="modal-footer">
 						      		<button type="submit" class="btn btn-primary">Đăng ký</button>
@@ -143,8 +125,8 @@
 									</div>
 									<div class="form-group"> 
 									    <div class="col-sm-6 col-md-6 col-md-offset-2">
-									      	<img src="facebook.png" alt="Login with facebook" style="height: 30px; width: 30px;">
-									      	<img src="googleplus.png" alt="Login with Google+" style="height: 30px; width: 30px;">
+									      	<img src="resources/assets/images/facebook.png" alt="Login with facebook" style="height: 30px; width: 30px;">
+									      	<img src="resources/assets/images/googleplus.png" alt="Login with Google+" style="height: 30px; width: 30px;">
 									    </div>
 									</div>
 									
@@ -158,66 +140,98 @@
 
 					</div>
 				</div>
-				
 			</div>
 			
 		</div>
+		<!--end header-->
+		<style type="text/css">
+			.list-inline li a span{
+				    font-weight: bold;
+				    color: #1caff6;
+				    font-size: 18px;
+			}
+		</style>
 		<div class="container" style="">
-			<div class="col-md-12" style="padding: 15px ;">
+			<div class="col-md-12" style="padding: 15px ;text-align: center;">
 			<!--begin-->
-				<div class="col-md-4" style="padding: 10px;">
-					<a href="detail_category.html">
-						<div class="col-md-12" style="padding: 15px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);">
-							<div class="col-md-6" style="padding: 15px 0px;">
-								<img src="resources/assets/images/1405503301_tienganhtreem_3.jpg" class="img-circle" alt="Cinque Terre" style="height: 150px; width: 150px;">
-							</div>
-							<div class="col-md-6" style="padding: 0px 5px;">
-								<h4>Chủ đề: Động vật</h4>
-								<span>Abalone :bào ngư <br/>
-									Aligator :cá sấu nam mỹ<br/>
-									Anteater :thú ăn kiến<br/>
-									Armadillo :con ta tu<br/>
-								</span>
-							</div>
-						</div>
-					</a>
+				<div class="" style=" border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);display: block;width: 400px;font-size: 17px;margin: 0 auto 40px;padding: 30px;text-align: center;">
+					<h2 class="" style="color: #34b1ee;margin-bottom: 50px;">Chọn một bài học!</h2>
+					
+					<ul class="list-inline">
+						<li class="">
+							<a  class="listen.html" href="">
+								<img src="resources/assets/images/listen.png" alt="Bat dau hoc" style="height: 100px;width: 100px;"><br/>
+								<span class="" style="">Listen</span>
+							</a>
+						</li>
+						<li class="">
+							<a  class="" href="">
+								<img src="resources/assets/images/read.png " alt="Test nhanh" style="height: 100px;width: 100px;"><br/>
+								<span class="" style="">Read</span>
+							</a>
+						</li>
+						<li class="">
+							<a  class="" href="">
+								<img src="resources/assets/images/speak.png " alt="Test nhanh" style="height: 100px;width: 100px;"><br/>
+								<span class="" style="">Write</span>
+							</a>
+						</li>
+					</ul>
 				</div>
-				<div class="col-md-4" style="padding: 10px;">
-					<a href="">
-						<div class="col-md-12" style="padding: 15px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);">
-							<div class="col-md-6" style="padding: 15px 0px;">
-								<img src="resources/assets/images/1405503301_tienganhtreem_3.jpg" class="img-circle" alt="Cinque Terre" style="height: 150px; width: 150px;">
-							</div>
-							<div class="col-md-6" style="padding: 0px 5px;">
-								<h4>Chủ đề: Động vật</h4>
-								<span>Abalone :bào ngư <br/>
-									Aligator :cá sấu nam mỹ<br/>
-									Anteater :thú ăn kiến<br/>
-									Armadillo :con ta tu<br/>
-								</span>
-							</div>
-						</div>
-					</a>
+			<!--end-->
+			</div>
+			<hr style="border:  2px solid #e9e9e9;height: 3;margin: 40px 0;">
+			<div class="col-md-12">
+				<h2 style="color: #3c3c3c;font-size: 20px;font-weight: 500;line-height: 26px;margin: 0 0 25px;">Ngữ pháp và ghi chú</h2>
+				<div class="">
+					<p style="color: #999;">Một số danh từ chỉ động vật, và nghĩa chủa chúng: </p>
+					<table class="table table-bordered" style="border: 1px solid #ddd;">
+						<thead>
+							<tr>
+								<th>Đại từ</th>
+								<th>Cách dịch</th>
+								<th>Phiên âm</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td  >I</td>
+								<td  >Tôi</td>
+								<td> /sku:l/</td>
+							</tr>
+							<tr>
+								<td  >He</td>
+								<td  >Anh ấy</td>
+								<td> /sku:l/</td>
+							</tr>
+							<tr>
+								<td  >She</td>
+								<td  >Cô ấy</td>
+								<td> /sku:l/</td>
+							</tr>
+							<tr>
+								<td  >It</td>
+								<td  >Nó/Đó</td>
+								<td> /sku:l/</td>
+							</tr>
+							<tr>
+								<td  >We</td>
+								<td  >Chúng tôi/ta</td>
+								<td> /sku:l/</td>
+							</tr>
+							<tr>
+								<td  >You</td>
+								<td  >Bạn</td>
+								<td> /sku:l/</td>
+							</tr>
+							<tr>
+								<td  >They</td>
+								<td  >Họ</td>
+								<td> /sku:l/</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<div class="col-md-4" style="padding: 10px;">
-					<a href="">
-						<div class="col-md-12" style="padding: 15px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);">
-							<div class="col-md-6" style="padding: 15px 0px;">
-								<img src="resources/assets/images/1405503301_tienganhtreem_3.jpg" class="img-circle" alt="Cinque Terre" style="height: 150px; width: 150px;">
-							</div>
-							<div class="col-md-6" style="padding: 0px 5px;">
-								<h4>Chủ đề: Động vật</h4>
-								<span>Abalone :bào ngư <br/>
-									Aligator :cá sấu nam mỹ<br/>
-									Anteater :thú ăn kiến<br/>
-									Armadillo :con ta tu<br/>
-								</span>
-							</div>
-						</div>
-					</a>
-				</div>
-				
-				<!--end-->
 			</div>
 		</div>
 	</div>

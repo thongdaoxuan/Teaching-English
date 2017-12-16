@@ -16,8 +16,30 @@ Route::get('/', function () {
 	//echo Question::all();
 	return view('welcome');
 });
-Route::get('/choose_category', function () {
+
+Route::get('/choose-category', function () {
 	//echo Question::all();
 	return view('choose_category');
 });
+
+Route::get('/choise-skill', function () {
+	//echo Question::all();
+	return view('choise_skill');
+});
+
+Route::get('/detail-category', function () {
+	//echo Question::all();
+	return view('detail_category');
+});
+
+Route::get('/test-short', function () {
+	//echo Question::all();
+	return view('test_short');
+});
+
+Route::get('/type-learn', function () {
+	//echo Question::all();
+	return view('type_learn');
+});
+
 Route::get('home', 'TestController@index');

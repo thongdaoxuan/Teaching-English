@@ -42,4 +42,14 @@ Route::get('/type-learn', function () {
 	return view('type_learn');
 });
 
+Route::get('/header', function () {
+	//echo Question::all();
+	return view('header');
+});
+
+Route::get('/see-leanr', function () {
+	//echo Question::all();
+	return view('see_again_learn');
+});
+
 Route::get('home', 'TestController@index');

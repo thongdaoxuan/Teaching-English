@@ -97,8 +97,8 @@
 		aaaaaaaa
 		<div ng-app="myApp" ng-controller="personCtrl">
 
-		First Name: <input type="text" ng-model="firstName"><br>
-		Last Name: <input type="text" ng-model="lastName"><br>
+		First Name: <span ng-bind="firstName"></span><br>
+		Last Name: <span ng-bind="lastName"></span>
 		<br>
 	
 			<input type="button" ng-click="fullName()">
@@ -109,13 +109,13 @@
 		var sites = {!! json_encode($question->toArray()) !!};
 		app.controller('personCtrl', function($scope) {
 			var i=0;
-			$scope.firstName = sites[i].ques_content;
-			$scope.lastName = sites[i].ques_level;
+			$scope.firstName = sites[i].qu_content;
+			$scope.lastName = sites[i].ca_id;
 			$scope.fullName = function() {
 				i++;
 				if(i<sites.length){
-					$scope.firstName = sites[i].ques_content;
-					$scope.lastName = sites[i].ques_level;
+					$scope.firstName = sites[i].qu_content;
+					$scope.lastName = sites[i].ca_id;
 				}
 				
 				return $scope.firstName + " " + $scope.lastName;

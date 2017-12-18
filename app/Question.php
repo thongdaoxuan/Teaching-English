@@ -5,23 +5,29 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use App\User;
+use App\Answer;
 
 class Question extends Model
 {
     //
 	protected $table = 'question';
-	protected $fillable =  ['ques_id', 'ques_content','ques_image','ques_audio','ques_level','les_id','ques_skill','created_at', 'updated_at'];
+	protected $fillable =  ['qu_id', 'qu_content','qu_image','qu_audio','qu_type','ca_id','qu_created_at', 'qu_updated_at'];
 	
-    protected $primaryKey = 'ques_id';
+    protected $primaryKey = 'qu_id';
 	
 	public function getViewQuestion(){
 		return DB::table($this->table)
-			->orderBy('ques_id', 'asc');
+			->orderBy('qu_id', 'asc');
 			//->paginate($numberPerPage);
 	}
 	public function SearchAllQuestion($name){
 		return DB::table($this->table)
-			->orderBy('ques_id', 'asc')
-			->where('ques_content','LIKE',"%".$name."%");
+			->orderBy('qu_id', 'asc')
+			->where('qu_content','LIKE',"%".$name."%");
+	}
+	public function answer(){
+		 return $this->belongsToMany('App\Answer','');
+		//return $this->hasMany('App\Answer');
+		 
 	}
 }

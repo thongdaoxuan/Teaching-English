@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<style type="text/css">
 		a:hover{
 			text-decoration: none;
@@ -139,13 +140,13 @@
 									<div class="form-group">
 									    <label class="control-label col-sm-2" for="email">Email:</label>
 									    <div class="col-sm-10">
-									      <input type="email" class="form-control" id="email" placeholder="Enter email">
+									      <input type="email" class="form-control" id="email1" placeholder="Enter email">
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label class="control-label col-sm-2" for="pwd">Password:</label>
 									    <div class="col-sm-10"> 
-									      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+									      <input type="password" class="form-control" id="pwd1" placeholder="Enter password">
 									    </div>
 									</div>
 									<div class="form-group"> 
@@ -178,7 +179,7 @@
 			</div>
 			
 		</div>
-		<div class="col-md-12" style="">
+		<div ng-app="myApp" ng-controller="personCtrl" class="col-md-12" style="">
 			
 			<div class="col-md-12" style="padding: 30px 150px;">
 				<div class="col-md-1">
@@ -191,8 +192,11 @@
 					<!--button tesst-->
 					<button onclick="move()">Click Me</button>
 				</div>
+				<span ng-bind="firstName"></span>
 				
 			</div>
+			
+		
 			<script>
 				function move() {
 				  var elem = document.getElementById("myBar");   
@@ -230,10 +234,10 @@
 					margin-right: 10px;
 				}
 			</style>
-			<div class="col-md-12">
+			<div class="col-md-12" ng-if="itemQuestion!=null">
 				<!--kieu cau hoi 1-->
-				<div class="col-md-12" style="text-align: center;">
-					<h3>Chọn từ cho "Phụ nữ"</h3>
+				<div  ng-if="itemQuestion.qu_type==1" class="col-md-12" style="text-align: center;">
+					<h3 ng-bind="itemQuestion.qu_content"></h3>
 					<div class="container" style="width: 60%;">
 						<div class="col-md-1"></div>
 						<div class="col-md-3 as_1" style="border: 2px solid #dadada;color: #3c3c3c;border-radius: 10px;font-size: 15px;">
@@ -314,13 +318,13 @@
 						color: #3c3c3c;
 					}
 				</style>
-				<div class="col-md-12 " style="text-align: center;">
+				<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2" class="col-md-12 " style="text-align: center;">
 					<h3>Điền từ còn thiếu vào chỗ trống</h3>
 					<div class="col-md-12">
 						<img src="resources/assets/images/women.jpg" style="width: 200px; height: 250px;">
 					</div>
 					<div class="col-md-12" style="padding: 15px;">
-						<span style="font-size: 20px;font-weight: bold;">This is a <b>...</b></span>
+						<span style="font-size: 20px;font-weight: bold;" ng-bind="itemQuestion.qu_content"></span>
 					</div>
 					<div class="col-md-12 as_2" >
 						<div class="col-md-1"></div>
@@ -347,13 +351,13 @@
 				</div>
 				<!--ket thuc kieu cau hoi 2-->
 				<!--kieu cau hoi 3-->
-				<div class="col-md-12 " style="text-align: center;">
+				<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type!=2 && itemQuestion.qu_type==3" class="col-md-12 " style="text-align: center;">
 					<h3>Điền từ còn thiếu vào chỗ trống</h3>
 					<div class="col-md-12">
 						<img src="resources/assets/images/women.jpg" style="width: 200px; height: 250px;">
 					</div>
 					<div class="col-md-12" style="padding: 15px;">
-						<span style="font-size: 20px;font-weight: bold;">This is a </span>
+						<span style="font-size: 20px;font-weight: bold;" ng-bind="itemQuestion.qu_content"></span>
 						<input type="text" name="text" style ="width: 10%;border: none;font-size: 20px;border-bottom-style: dotted;font-weight: bold;">
 						
 					</div>
@@ -367,7 +371,7 @@
 					
 				}
 			</style>
-			<div class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div ng-if="itemQuestion.qu_type==1 " class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<!--kiem tra dap an-->
 				<div class="col-md-6" style="text-align: center;">
 					<button data-test="player-skip" class="btn btn-default btn-lg btn_leave" style="border-radius: 100px;width: 30%;">Bỏ qua</button>
@@ -376,7 +380,7 @@
 					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;">Kiểm tra</button>
 				</div>				
 			</div>
-			<div class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2 " class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<!--Thong bao kiem tra dap an neu dung-->
 				<div class="col-md-6" style="">
 					<div class="col-md-6">
@@ -390,7 +394,7 @@
 					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;">Tiếp tục</button>
 				</div>
 			</div>
-			<div class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type!=2 && itemQuestion.qu_type==3" class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<!--Thong bao sai-->
 				<div class="col-md-6" style="">
 					<div class="col-md-6">
@@ -408,6 +412,52 @@
 			</div>
 		</div>
 	</div>
-	
+	<script>
+		var app = angular.module('myApp', [], function($interpolateProvider) {
+            $interpolateProvider.startSymbol('[[');
+            $interpolateProvider.endSymbol(']]');
+		});
+		app.controller('personCtrl', function($scope,$http) {
+			
+			$scope.questions=[];
+			$scope.itemQuestion=null;
+			$scope.indexQuestion=0;
+			$scope.getAllQuestion = function() {
+				var url = "http://localhost:8080/TeachingEnglish/api/get-question";
+				$http.get(url).then( function(response) {
+					$scope.questions = response.data;
+					$scope.firstQuestion();
+				});
+			};
+			$scope.generateQuestion=function(){
+				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
+				$scope.itemQuestion.answers=JSON.parse("["+$scope.itemQuestion.answers+"]");
+				console.log("aaannnnnnnnnnnnnnnnn");
+				
+				for(var i=0;i<$scope.itemQuestion.answers.length;i++){
+					$scope.itemQuestion.answers[i].user_answer="";
+				}
+				console.log($scope.itemQuestion);
+			}
+			$scope.firstQuestion = function() {
+				$scope.indexQuestion=0;
+				$scope.generateQuestion();
+			}
+			$scope.nextQuestion = function() {
+				$scope.indexQuestion++;
+				$scope.generateQuestion();
+			}
+			$scope.previewQuestion = function() {
+				$scope.indexQuestion--;
+				$scope.generateQuestion();
+			}
+			$scope.checkAnswer = function() {
+				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
+			}
+			$scope.getAllQuestion();
+		
+			
+		});
+		</script>
 </body>
 </html>

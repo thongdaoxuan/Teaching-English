@@ -1,0 +1,92 @@
+diff a/resources/views/type_learn.blade.php b/resources/views/type_learn.blade.php	(rejected hunks)
+@@ -262,90 +262,6 @@
+ 							</script>
+ 
+ 						</div>
+-						<div class="col-md-3 as_1" style="border: 2px solid #dadada;color: #3c3c3c;border-radius: 10px;font-size: 15px;">
+-							<div class="col-md-12" style="padding: 10px 0px;">
+-								<img src="resources/assets/images/Trump.jpg" style="width: 140px; height: 200px;">
+-							</div>
+-							<div class="col-md-12 radio" style="text-align: left;">
+-								<label onclick="playAudio_as_2();">
+-							      	<input type="radio"  value="0" class="as_ra"   name="optradio">
+-							      	<span>Man</span>
+-							    </label>
+-							</div>
+-							<audio controls hidden id="au_as_2">
+-							  	<source src="resources/assets/audio/au_man.mp3" type="audio/mpeg">
+-							</audio>
+-							<script>
+-								
+-								function playAudio_as_2() { 
+-									var x = document.getElementById("au_as_2"); 
+-								    x.play(); 
+-								} 
+-								
+-							</script>
+-						</div>
+-						<div class="col-md-3 as_1" style="border: 2px solid #dadada;color: #3c3c3c;border-radius: 10px;font-size: 15px;">
+-							<div class="col-md-12" style="padding: 10px 0px;">
+-								<img src="resources/assets/images/led.jpg" style="width: 140px; height: 200px;">
+-							</div>
+-							<div class="col-md-12 radio" style="text-align: left;">
+-								<label onclick="playAudio_as_3();">
+-							      	<input type="radio"  value="0" class="as_ra" name="optradio">
+-							      	<span>Lights</span>
+-							    </label>
+-							</div>
+-							<audio controls hidden id="au_as_3">
+-							  	<source src="resources/assets/audio/au_light.mp3" type="audio/mpeg">
+-							</audio>
+-							<script>
+-								
+-								function playAudio_as_3() { 
+-									var x = document.getElementById("au_as_3"); 
+-								    x.play(); 
+-								} 
+-								
+-							</script>
+-						</div>
+-					</div>
+-				</div>
+-				<!--ket thuc kieu cau hoi 1-->
+-				<!--kieu cau hoi 2-->
+-				<style type="text/css">
+-					
+-					.as_2 span{
+-						font-size: 18px;
+-						color: #3c3c3c;
+-					}
+-				</style>
+-				<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2" class="col-md-12 " style="text-align: center;">
+-					<h3>Điền từ còn thiếu vào chỗ trống</h3>
+-					<div class="col-md-12">
+-						<img src="resources/assets/images/women.jpg" style="width: 200px; height: 250px;">
+-					</div>
+-					<div class="col-md-12" style="padding: 15px;">
+-						<span style="font-size: 20px;font-weight: bold;" ng-bind="itemQuestion.qu_content"></span>
+-					</div>
+-					<div class="col-md-12 as_2" >
+-						<div class="col-md-1"></div>
+-						<div class="col-md-3">
+-							<label onclick="playAudio_as_1();">
+-						      	<input type="radio"  value="women" class="as_ra" name="optradio">
+-						      	<span>Woman</span>
+-						    </label>
+-						</div>
+-						<div class="col-md-3">
+-							<label onclick="playAudio_as_1();">
+-						      	<input type="radio"  value="Man" class="as_ra" name="optradio">
+-						      	<span>Man</span>
+-						    </label>
+-						</div>
+-						<div class="col-md-3">
+-							<label onclick="playAudio_as_1();">
+-						      	<input type="radio"  value="Apple" class="as_ra" name="optradio">
+-						      	<span>Apple</span>
+-						    </label>
+-						</div>
+-
+ 						
+ 				</div>
+ 				<!--ket thuc kieu cau hoi 2-->

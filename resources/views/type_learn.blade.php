@@ -423,7 +423,7 @@
 			$scope.itemQuestion=null;
 			$scope.indexQuestion=0;
 			$scope.getAllQuestion = function() {
-				var url = "http://localhost:8080/TeachingEnglish/api/get-question";
+				var url = "http://localhost/CNPM/api/get-question";
 				$http.get(url).then( function(response) {
 					$scope.questions = response.data;
 					$scope.firstQuestion();

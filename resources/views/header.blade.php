@@ -163,7 +163,7 @@
 			
 		</div>
 		<div class="container" style="">
-			
+			@yield('content')
 		</div>
 	</div>
 	

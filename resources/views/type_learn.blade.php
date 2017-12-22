@@ -244,7 +244,9 @@
 				
 			} ;
 			$scope.getAllQuestion = function() {
+
 				var url = "http://localhost:8080/TeachingEnglish/api/get-question/"+jsvar;
+
 				$http.get(url).then( function(response) {
 					$scope.questions = response.data;
 					$scope.firstQuestion();

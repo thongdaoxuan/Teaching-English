@@ -4,10 +4,13 @@
 <head>
 	<title>Type 1</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('public/css/glyphicon.css') }}">
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
 	<style type="text/css">
 		a:hover{
 			text-decoration: none;
@@ -24,6 +27,7 @@
 
 		#myProgress {
 		  width: 100%;
+		  height: 2px;
 		  background-color: #ddd;
 		}
 
@@ -36,23 +40,7 @@
 </head>
 <body>
 
-		<script>
-		function move() {
-			var elem = document.getElementById("myBar");   
-			var width = 1;
-			var id = setInterval(frame, 100);
-			function frame() {
-				if (width >= 100) {
-				  clearInterval(id);
-				} else {
-				  //width++; //bien nay de cộng cho cái % of thẻ div
-				  elem.style.width = 50 + '%'; 
-				 
-				}
-			 
-			}
-		}
-		</script>
+		
 			<style type="text/css">
 				
 				.as_1:hover{
@@ -69,6 +57,10 @@
 				.as_1{
 					margin-right: 10px;
 				}
+				.as_2 span{
+					font-size: 18px;
+					color: #3c3c3c;
+				}
 			</style>
 	<div class="col-md-12" style="padding: 0px;">
 		
@@ -80,10 +72,10 @@
 				</div>
 				<div class="col-md-11" style="padding: 10px 0px;">
 					<div id="myProgress">
-					  	<div id="myBar"></div>
+					  	
+					  	<div data-ng-bind-html="trustAsHtml(myProgress)"></div>
 					</div>
-					<!--button tesst-->
-					<button onclick="move()">Click Me</button>
+					
 				</div>
 				
 			</div>
@@ -117,14 +109,8 @@
 				</div>
 				<!--ket thuc kieu cau hoi 1-->
 				<!--kieu cau hoi 2-->
-				<style type="text/css">
-					
-					.as_2 span{
-						font-size: 18px;
-						color: #3c3c3c;
-					}
-				</style>
-				<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2" class="col-md-12 " style="text-align: center;">
+				
+				<!--<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2" class="col-md-12 " style="text-align: center;">
 					<h3>Điền từ còn thiếu vào chỗ trống</h3>
 					<div class="col-md-12">
 						<img src="resources/assets/images/women.jpg" style="width: 200px; height: 250px;"/>
@@ -158,15 +144,17 @@
 				</div>
 				<!--ket thuc kieu cau hoi 2-->
 				<!--kieu cau hoi 3-->
-				<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type!=2 && itemQuestion.qu_type==3" class="col-md-12 " style="text-align: center;">
-					<h3>Điền từ còn thiếu vào chỗ trống</h3>
-					<div class="col-md-12">
-						<img src="resources/assets/images/women.jpg" style="width: 200px; height: 250px;">
-					</div>
+				<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2" class="col-md-12 " style="text-align: center;">
+					<h3>Viết từ này bằng tiếng Anh</h3>
+					
 					<div class="col-md-12" style="padding: 15px;">
 						<span style="font-size: 20px;font-weight: bold;" ng-bind="itemQuestion.qu_content"></span>
-						<input type="text" name="text" style ="width: 10%;border: none;font-size: 20px;border-bottom-style: dotted;font-weight: bold;">
 						
+					</div>
+					<div class="col-md-12"  style="padding: 15px;">
+						
+						<textarea rows="6" cols="50" name="text" ng-model="itemQuestion.answers[0].user_answer">
+						</textarea>
 					</div>
 					
 				</div>
@@ -174,16 +162,16 @@
 			</div>
 
 			
-			<div ng-if="itemQuestion.qu_type==1 " class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div ng-if="typeButton==1 " class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<!--kiem tra dap an-->
 				<div class="col-md-6" style="text-align: center;">
-					<button data-test="player-skip" class="btn btn-default btn-lg btn_leave" style="border-radius: 100px;width: 30%;">Bỏ qua</button>
+					<button data-test="player-skip" class="btn btn-default btn-lg btn_leave" ng-click="skipQuestion()" style="border-radius: 100px;width: 30%;">Bỏ qua</button>
 				</div>
 				<div class="col-md-6" style="text-align: center;">
-					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;">Kiểm tra</button>
+					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;" ng-click="checkAnswer()">Kiểm tra</button>
 				</div>				
 			</div>
-			<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type==2 " class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div ng-if="typeButton!=1 && typeButton==2 " class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<!--Thong bao kiem tra dap an neu dung-->
 				<div class="col-md-6" style="">
 					<div class="col-md-6">
@@ -194,10 +182,10 @@
 					</div>
 				</div>
 				<div class="col-md-6" style="text-align: center;">
-					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;">Tiếp tục</button>
+					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;" ng-click="nextQuestion()">Tiếp tục</button>
 				</div>
 			</div>
-			<div ng-if="itemQuestion.qu_type!=1 && itemQuestion.qu_type!=2 && itemQuestion.qu_type==3" class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div ng-if="typeButton!=1 && typeButton!=2 && typeButton==3" class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<!--Thong bao sai-->
 				<div class="col-md-6" style="">
 					<div class="col-md-6">
@@ -205,32 +193,63 @@
 					</div>
 					<div class="col-md-6" >
 						<div class="col-md-12"><h3 style="float: left;font-weight: bold;color: red;">Đáp án đúng: </h3></div>
-						<div class="col-md-12"><span style="font-size: 18px; color: red;">Women</span></div>
+						<div class="col-md-12"><span style="font-size: 18px; color: red;">[[correctAnswer]]</span></div>
 						
 					</div>
 				</div>
 				<div class="col-md-6" style="text-align: center;">
-					<button data-test="player-skip" class="btn btn-lg btn_leave" style="border-radius: 100px;background-color: red !important;color: #fff;width: 30%;">Tiếp tục</button>
+					<button data-test="player-skip" class="btn btn-lg btn_leave"ng-click="nextQuestion()" style="border-radius: 100px;background-color: red !important;color: #fff;width: 30%;">Tiếp tục</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
 	<script>
-		var app = angular.module('myApp', [], function($interpolateProvider) {
+		var app = angular.module('myApp',['ngSanitize'], function($interpolateProvider) {
             $interpolateProvider.startSymbol('[[');
             $interpolateProvider.endSymbol(']]');
 		});
-		app.controller('personCtrl', function($scope,$http) {
-			
+		
+		app.controller('personCtrl', function($scope,$sce,$http) {
+			$scope.trustAsHtml = function(string) {
+				return $sce.trustAsHtml(string);
+			};
+			var jsvar = <?php echo json_encode($ca_id); ?>;
 			$scope.questions=[];
 			$scope.itemQuestion=null;
 			$scope.indexQuestion=0;
+			$scope.typeButton=1;
+			
+			$scope.correctAnswer="";
+			$scope.lifeMax=3;
+			$scope.myProgress="";
+			
+			
+			$scope.reloadProgressBar= function() { 
+				$scope.myProgress="<div style='float:left;width:1%;margin-top:-1px ; height: 5px;  background-color: green;'></div>";
+				var onePercent=(1.0/$scope.questions.length)*99;
+				for(var i=0;i<$scope.questions.length;i++){
+					var item =$scope.questions[i];
+					if(item.isCorrect==undefined){
+						break;
+					}
+					if(item.isCorrect){
+						$scope.myProgress+="<div style='float:left;width:"+onePercent+"%; height: 5px; margin-top:-1px ; background-color: green;'></div>";
+					}else{
+						$scope.myProgress+="<div style='float:left;width:"+onePercent+"%; height: 5px; margin-top:-1px ;  background-color: red;' ></div>";
+					}
+				
+					
+				}
+				
+			} ;
 			$scope.getAllQuestion = function() {
-				var url = "http://localhost:8080/TeachingEnglish/api/get-question";
+				var url = "http://localhost:8080/TeachingEnglish/api/get-question/"+jsvar;
 				$http.get(url).then( function(response) {
 					$scope.questions = response.data;
 					$scope.firstQuestion();
 				});
+				$scope.reloadProgressBar();
 			};
 			$scope.generateQuestion=function(){
 				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
@@ -247,24 +266,62 @@
 			}
 			$scope.nextQuestion = function() {
 				$scope.indexQuestion++;
+				if($scope.indexQuestion>$scope.questions.length-1){
+					return;
+				}
 				$scope.generateQuestion();
+				$scope.typeButton=1;
 			}
 			$scope.previewQuestion = function() {
 				$scope.indexQuestion--;
 				$scope.generateQuestion();
 			}
+			
 			$scope.checkAnswer = function() {
 				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
+				var temp = true;
+				for(var i=0;i<$scope.itemQuestion.answers.length;i++){
+					if($scope.itemQuestion.answers[i].user_answer!=$scope.itemQuestion.answers[i].an_correct){
+						temp=false;
+					}
+					if(($scope.itemQuestion.answers[i].an_correct=="true" && $scope.itemQuestion.qu_type==1)|| ($scope.itemQuestion.qu_type==2)){
+						$scope.correctAnswer=$scope.itemQuestion.answers[i].an_content;
+					}
+				}
+				$scope.itemQuestion.isCorrect=temp;
+				if(temp==true){
+					$scope.typeButton=2;
+					
+				}else{
+					$scope.typeButton=3;
+					$scope.lifeMax--;
+				}
+				$scope.reloadProgressBar();
+				
+			}
+			$scope.skipQuestion = function() {
+				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
+				
+				for(var i=0;i<$scope.itemQuestion.answers.length;i++){
+					
+					if(($scope.itemQuestion.answers[i].an_correct=="true" && $scope.itemQuestion.qu_type==1)|| ($scope.itemQuestion.qu_type==2)){
+						$scope.correctAnswer=$scope.itemQuestion.answers[i].an_content;
+					}
+				}
+				$scope.typeButton=3;
+				
 			}
 			$scope.getAllQuestion();
+			
 			$scope.answerTrueFalseQuestion= function(answer,id,index) { 
 				for(var i=0;i<answer.length;i++){
 					answer[i].user_answer=(i==index)?"true":"false";
 				}
 				var x = document.getElementById("au_as_"+id); 
-				x.play(); 
+				//x.play(); 
 			} ;
-		
+			
+			
 			
 		});
 		</script>

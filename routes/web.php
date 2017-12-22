@@ -52,4 +52,5 @@ Route::get('/see-leanr', function () {
 	return view('see_again_learn');
 });
 
-Route::get('home', 'TestController@index');
+Route::get('home/{ca_id}', 'TestController@index');
+Route::get('test/{ca_id}', 'TestController@testShort');

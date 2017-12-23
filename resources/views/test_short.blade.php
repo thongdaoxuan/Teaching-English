@@ -1,5 +1,6 @@
 
-<!DOCTYPE html>
+<!DOCTYPE
+ html>
 <html>
 <head>
 	<title>Short Test</title>
@@ -23,22 +24,28 @@
 			text-align: left;
 		}
 		.as_ra{
-				    border: 2px solid #dadada;
-				    font-size: 20px;
-				    height: 19px;
-				    line-height: 19px;
-				    width: 19px;
-				}
-				.as_1 span{
-					font-size: 20px;
-					color: #3c3c3c;
-				}
+			border: 2px solid #dadada;
+			font-size: 20px;
+			height: 19px;
+			line-height: 19px;
+			width: 19px;
+		}
+		.as_1 span{
+			font-size: 20px;
+			color: #3c3c3c;
+		}
+		.answerStyle{
+			padding:0px;border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 1px 5px rgba(0,0,0,.2);
+			
+		}
 	</style>
 </head>
 <body>
 
 	 <div ng-app="testShort" ng-controller="testCtrl" class="col-md-12" style="padding: 0px;">
-		<div class="container"  style="">
+		<div class="container" ng-if="questions.length>0" style="">
 			<!--
 			<div class="col-md-12" style="text-align: center;padding-top: 10%; ">
 				<h2 style="color: #ff9b00;margin-bottom: 40px; ">Thực hiện bài test để kết thúc nhanh chuyên đề: Động vật</h2>
@@ -80,55 +87,62 @@
 			<!--them-->
 			<div class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<div class="col-md-6" style="text-align: center;">
-					<button data-toggle="modal" data-target="#xem_lai_bai" data-test="player-skip" class="btn btn-lg " style="border-radius: 100px;background-color: #fbfbfb;color: #65ab00;width: 30%;">Xem lại bài học</button>
+					<button data-toggle="modal" data-target="#xem_lai_bai" data-test="player-skip" class="btn btn-lg " style="border-radius: 100px;background-color: #fbfbfb;color: #65ab00;width: 30%;" ng-click="checkAnswer()">Xem kết quả</button>
 					<!-- Modal -->
 					<div class="modal fade" id="xem_lai_bai" role="dialog">
 						<div class="modal-dialog">
+							
 						
 						  <!-- Modal content-->
 						  <div class="modal-content">
 							<div class="modal-header">
 							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h3 class="modal-title">Xem bảng điểm của bạn</h3>
+							  <h3 class="modal-title">Xem bảng điểm của bạn: [[markCheck]]/[[questions.length]]</h3>
 							</div>
 							<div class="modal-body row">
 							  <!--begin content-->
 								<div class="col-md-12" style="height: 300px; overflow-y: auto;">
 									<!-- mau cau dung-->
-									<div class="col-md-4">
-										
-										<div class="col-md-12"  style="padding:0px;border: 1px solid #ccc;border-radius: 5px;box-shadow: 0 1px 5px rgba(0,0,0,.2);background-color: #def0a5;color: #90b84a;">
-											<div class="col-md-12" style="padding: 5px;">
-												<div class="col-md-10" style="padding: 5px; font-weight: bold;">
-													Nội dung câu hỏi da hoi
+									<div ng-repeat="question in questions">
+										<div class="col-md-4" >
+											
+											<div class="col-md-12 answerStyle"  ng-style="(question.check==1)? {'background-color': '#def0a5','color': '#90b84a'}: {'background-color': '#ffd4cc','color': '#df472c'}">
+												<div class="col-md-12" style="padding: 5px;">
+													<div class="col-md-10" style="padding: 5px; font-weight: bold;">
+														[[question.qu_content]]
+													</div>
+													<div class="col-md-2" style="padding: 0px;">
+														<span ng-if="question.check==1" class="glyphicon glyphicon-ok" style="border: 1px solid #ccc;border-radius: 20px;padding: 5px;background-color: #fff;"></span>
+														<span ng-if="question.check==0" class="glyphicon glyphicon-remove" style="border: 1px solid #ccc;border-radius: 20px;padding: 5px;background-color: #fff;"></span>
+													</div>
 												</div>
-												<div class="col-md-2" style="padding: 0px;">
-													<span class="glyphicon glyphicon-ok" style="    border: 1px solid #ccc;border-radius: 20px;padding: 5px;background-color: #fff;"></span>
+												<div class="col-md-12">
+													<span>Đáp án: [[question.intensiveAnswer]]</span>
 												</div>
-											</div>
-											<div class="col-md-12">
-												<span>Nội dung nhập vào</span>
 											</div>
 										</div>
+										<!--
+										<div class="col-md-4" ng-if="question.check==0">
+											<div class="col-md-12 answerStyle" style="background-color: #ffd4cc;color: #df472c;">
+												<div class="col-md-12" style="padding: 5px;">
+													<div class="col-md-10" style="padding: 5px; font-weight: bold;">
+														[[question.qu_content]]
+													</div>
+													<div class="col-md-2" style="padding: 0px;">
+														<span class="glyphicon glyphicon-remove" style="    border: 1px solid #ccc;border-radius: 20px;padding: 5px;background-color: #fff;"></span>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<span>Đáp án: [[question.intensiveAnswer]]</span>
+												</div>
+											</div>
+											
+										</div>
+										-->
 									</div>
 
 									<!-- mau cau sai-->
-									<div class="col-md-4" >
-										<div class="col-md-12" style="padding:0px;border: 1px solid #ccc;border-radius: 5px;box-shadow: 0 1px 5px rgba(0,0,0,.2);background-color: #ffd4cc;color: #df472c;">
-											<div class="col-md-12" style="padding: 5px;">
-												<div class="col-md-10" style="padding: 5px; font-weight: bold;">
-													Nội dung câu hỏi da hoi
-												</div>
-												<div class="col-md-2" style="padding: 0px;">
-													<span class="glyphicon glyphicon-remove" style="    border: 1px solid #ccc;border-radius: 20px;padding: 5px;background-color: #fff;"></span>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<span>Nội dung nhập vào</span>
-											</div>
-										</div>
-										
-									</div>
+									
 								</div>
 							  <!--end content-->
 							</div>
@@ -145,9 +159,7 @@
 				</div>
 			</div>
 			<!--them-->
-			<div  class="col-md-12" style="text-align: center;">
-				<button class="btn btn-default" ng-click="checkAnswer()">Check</button>
-			</div>
+			
 		</div>
 	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
@@ -162,16 +174,23 @@
 			var jsvar = <?php echo json_encode($ca_id); ?>;
 			$scope.questions=[];
 			
-			$scope.markCheck=0;
+			
 			
 			$scope.getAllQuestion = function() {
 				var url = "http://localhost:8080/TeachingEnglish/api/get-question/"+jsvar;
 				$http.get(url).then( function(response) {
 					$scope.questions = response.data;
 					for(var i=0;i<$scope.questions.length;i++){
+						$scope.questions[i].check=1;	
 						$scope.questions[i].answers=JSON.parse("["+$scope.questions[i].answers+"]");
 						for(var j=0;j<$scope.questions[i].answers.length;j++){
 							$scope.questions[i].answers[j].user_answer="";
+							if($scope.questions[i].qu_type==1 && $scope.questions[i].answers[j].an_correct=='true'){
+								$scope.questions[i].intensiveAnswer=$scope.questions[i].answers[j].an_content;
+							}
+							else if($scope.questions[i].qu_type==2){
+								$scope.questions[i].intensiveAnswer=$scope.questions[i].answers[j].an_content;
+							}
 						}
 							
 					}
@@ -189,18 +208,24 @@
 			// }
 			
 			$scope.checkAnswer = function() {
-				
+				$scope.markCheck=0;
 				for(var i=0;i<$scope.questions.length;i++){
-						
+					$scope.questions[i].check=1;
 					for(var j=0;j<$scope.questions[i].answers.length;j++){
 						if($scope.questions[i].answers[j].user_answer!=$scope.questions[i].answers[j].an_correct){
-							$scope.markCheck++;
-							continue;
+							$scope.questions[i].check=0;
+							break;
 						}
+					}
+					if($scope.questions[i].check==1){
+						$scope.markCheck++;
 					}
 						
 				}
-				$scope.markCheck=$scope.questions.length-$scope.markCheck;
+				$scope.markCheck=$scope.markCheck;
+				console.log("$scope.questions.length: "+$scope.questions.length);
+				console.log("$scope.questions: ");
+				console.log($scope.questions);
 				console.log("mark: "+$scope.markCheck);
 			};
 			

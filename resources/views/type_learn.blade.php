@@ -5,7 +5,6 @@
 	<title>Type 1</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/css/glyphicon.css') }}">
 	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -61,6 +60,9 @@
 					font-size: 18px;
 					color: #3c3c3c;
 				}
+				.itemSpanStyle{
+					color: red;
+				}
 			</style>
 	<div class="col-md-12" style="padding: 0px;">
 		
@@ -75,10 +77,11 @@
 					  	<div data-ng-bind-html="trustAsHtml(myProgress)"></div>
 					</div>
 				</div>
-				<div class="col-md-2">
-					<span style="color: red; font-size: 20px; float: right;" class="glyphicon glyphicon-heart"></span>
-					<span style="color: red; font-size: 20px; float: right;" class="glyphicon glyphicon-heart"></span>
-					<span style="color: red; font-size: 20px; float: right;" class="glyphicon glyphicon-heart"></span>
+				<div class="col-md-2" style="padding-left: 0px;">
+					<span ng-class="{'itemSpanStyle': lifeMax>2}" ><span style=" font-size: 22px; float: right;" class="glyphicon glyphicon-heart"></span></span>
+					<span ng-class="{'itemSpanStyle': lifeMax>1}" ><span style=" font-size: 22px; float: right;" class="glyphicon glyphicon-heart"></span></span>
+					<span ng-class="{'itemSpanStyle': lifeMax>0}" ><span style=" font-size: 22px; float: right;" class="glyphicon glyphicon-heart"></span></span>
+					
 				</div>
 			</div>
 			

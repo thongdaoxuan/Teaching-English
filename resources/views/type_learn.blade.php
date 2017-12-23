@@ -70,14 +70,16 @@
 				<div class="col-md-1">
 					<a href="" title="Tro lai" style="color: #ccc;font-size: 20px;float: right;">X</a>
 				</div>
-				<div class="col-md-11" style="padding: 10px 0px;">
+				<div class="col-md-9" style="padding: 10px 0px;">
 					<div id="myProgress">
-					  	
 					  	<div data-ng-bind-html="trustAsHtml(myProgress)"></div>
 					</div>
-					
 				</div>
-				
+				<div class="col-md-2">
+					<span style="color: red; font-size: 20px; float: right;" class="glyphicon glyphicon-heart"></span>
+					<span style="color: red; font-size: 20px; float: right;" class="glyphicon glyphicon-heart"></span>
+					<span style="color: red; font-size: 20px; float: right;" class="glyphicon glyphicon-heart"></span>
+				</div>
 			</div>
 			
 		

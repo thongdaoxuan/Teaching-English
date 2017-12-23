@@ -33,6 +33,9 @@
 			<div class="col-md-12" style="padding: 15px ;">
 			<!--begin-->
 				<div class="col-md-4" style="padding: 10px;">
+					<div class="col-md-1" style="z-index: 1;position: absolute;right: 20px;top: 15px;border: 1px solid #ccc;border-radius: 100px;padding: 5px;text-align: center;background: #65ab00;color: #fff;">
+					 	<span class="glyphicon glyphicon-ok"></span>
+					</div>
 					<a href="detail_category.html">
 						<div class="col-md-12" style="padding: 15px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);">
 							<div class="col-md-6" style="padding: 15px 0px;">

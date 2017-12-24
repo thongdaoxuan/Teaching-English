@@ -158,7 +158,6 @@
 			
 		</div>
 	</div>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
 	<script>
 		var app = angular.module('testShort',['ngSanitize'], function($interpolateProvider) {
             $interpolateProvider.startSymbol('[[');

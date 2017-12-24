@@ -11,7 +11,20 @@
 |
 */
 use App\Question;
-
+Route::get('/', function () {
+    //echo Question::all();
+    return view('/auth/login');
+});
+Route::get('home', 'TestController@index');
+Auth::routes();
+Route::resource('categories','CategoryController');
+Route::resource('questions','QuestionController');
+Route::resource('answer','AnswerController');
+Route::get('/questions/create','CategoryController@sendToQuestion');
+Route::get('/questions/createAnswer','QuestionController@createAnswer');
+Route::post('/questions', 'QuestionController@upload');
+Route::post('/answers','QuestionController@addAnswer');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
 	//echo Question::all();
 	return view('welcome');

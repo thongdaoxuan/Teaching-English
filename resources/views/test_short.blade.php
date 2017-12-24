@@ -75,6 +75,12 @@
 				
 			</div>
 			<!--them-->
+			<div class="col-md-12" style="padding: 0px;height: 83vh;background-color: #f0f0f0; text-align: center;padding: 10% 15px;">
+				<h3 style="margin-bottom: 40px; "><strong>Chúc mừng!</strong> bạn đã hoàn thành bài học.</h3>
+				<div class="col-md-2 col-md-offset-5" style="text-align: center;height: 150px;font-size: 25px;width: 150px;border: 10px solid #fdca00;padding: 4% 10px;color: #ffca00;border-radius: 100px;">
+					<span>10</span>/<span>10</span>
+				</div>			
+			</div>
 			<div class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<div class="col-md-6" style="text-align: center;">
 					<button data-toggle="modal" data-target="#xem_lai_bai" data-test="player-skip" class="btn btn-lg " style="border-radius: 100px;background-color: #fbfbfb;color: #65ab00;width: 30%;" ng-click="checkAnswer()">Xem kết quả</button>

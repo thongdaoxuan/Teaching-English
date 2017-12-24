@@ -7,12 +7,12 @@
 			text-decoration: none;
 		}
 		.list_choose ul li{
-				border: 1px solid #54c4eb;
-			    margin-bottom: 10px;
-   				border-radius: 50px !important;
+			border: 1px solid #54c4eb;
+			margin-bottom: 10px;
+			border-radius: 50px !important;
 		}
 		.nav li a:hover,.nav li a:visited ,.nav li a:active{
-			    background-color: rgb(20, 147, 209);
+			background-color: rgb(20, 147, 209);
 			    
 		}
 

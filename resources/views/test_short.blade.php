@@ -42,7 +42,7 @@
 				<button type="button" class="btn btn-success btn-lg" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 15%;">Bắt đầu</button>
 			</div>
 			-->
-			<div ng-repeat="question in questions" class="col-md-12" style="padding: 15px;">
+			<div ng-repeat="question in questions" ng-if="typeButton==0" class="col-md-12" style="padding: 15px;">
 				<div ng-if="question.qu_type==1" class="col-md-12" style="text-align: left;">
 					<h3>Câu [[$index+1]]: <span ng-bind="question.qu_content"></span></h3>
 
@@ -75,15 +75,15 @@
 				
 			</div>
 			<!--them-->
-			<div class="col-md-12" style="padding: 0px;height: 83vh;background-color: #f0f0f0; text-align: center;padding: 10% 15px;">
-				<h3 style="margin-bottom: 40px; "><strong>Chúc mừng!</strong> bạn đã hoàn thành bài học.</h3>
+			<div ng-if="typeButton==1" class="col-md- 12" style="padding: 0px;height: 83vh;background-color: #f0f0f0; text-align: center;padding: 10% 15px;">
+				<h3 style="margin-bottom: 40px; "> Kết quả:</h3>
 				<div class="col-md-2 col-md-offset-5" style="text-align: center;height: 150px;font-size: 25px;width: 150px;border: 10px solid #fdca00;padding: 4% 10px;color: #ffca00;border-radius: 100px;">
-					<span>10</span>/<span>10</span>
+					<span>[[markCheck]]</span>/<span>[[questions.length]]</span>
 				</div>			
 			</div>
-			<div class="col-md-12" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+			<div class="col-md-12" ng-if="typeButton==1" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
 				<div class="col-md-6" style="text-align: center;">
-					<button data-toggle="modal" data-target="#xem_lai_bai" data-test="player-skip" class="btn btn-lg " style="border-radius: 100px;background-color: #fbfbfb;color: #65ab00;width: 30%;" ng-click="checkAnswer()">Xem kết quả</button>
+					<button data-toggle="modal" data-target="#xem_lai_bai" data-test="player-skip" class="btn btn-lg " style="border-radius: 100px;background-color: #fbfbfb;color: #65ab00;width: 30%;" >Xem kết quả</button>
 					<!-- Modal -->
 					<div class="modal fade" id="xem_lai_bai" role="dialog">
 						<div class="modal-dialog">
@@ -155,7 +155,13 @@
 				</div>
 			</div>
 			<!--them-->
-			
+			<div class="col-md-12" ng-if="typeButton==0" style="background-color: #e7e7e7;height: auto; padding: 30px; margin-top: 50px;">
+				<div class="col-md-6" style="text-align: center;">
+				</div>	
+				<div class="col-md-6" style="text-align: center;">
+					<button data-test="player-skip" class="btn btn-lg" style="border-radius: 100px;background-color: #65ab00 !important;color: #fff;width: 30%;" ng-click="checkAnswer()">Kiểm tra kết quả</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -168,6 +174,7 @@
 			
 			var jsvar = <?php echo json_encode($ca_id); ?>;
 			$scope.questions=[];
+			$scope.typeButton=0;
 			
 			
 			
@@ -222,6 +229,7 @@
 				console.log("$scope.questions: ");
 				console.log($scope.questions);
 				console.log("mark: "+$scope.markCheck);
+				$scope.typeButton=1;
 			};
 			
 			$scope.getAllQuestion();

@@ -1,9 +1,8 @@
-# Teaching-English
- Teaching-English web dạy tiếng anh cơ bản và nâng cao cho các em học sinh. Trang web sẽ hỗ trợ các em về việc học tiếng anh hàng ngày, từ phát âm cơ bản, luyện ngữ pháp của các cấu trúc câu, luyện tập khả năng nghe tiếng anh qua các video hay bản nhạc tiếng anh, đồng thời cũng sẽ có các bài test ngữ pháp cho các em có thể kiểm tra trình độ của mình sau các bài ngữ pháp.
- Teaching English sẽ sử dụng PHP với Framework Laravel, cơ sở dữ liệu sẽ sử dụng PHP MySQL, với các chức năng chính để giải quyết cho các vấn đề trên:
-  + Phát âm theo phát âm chuẩn.
-  + Học ngữ pháp qua hình ảnh hay các câu hỏi ngắn bằng cách chọn các đáp án của câu hỏi.
-  + Nghe tiếng anh: nghe 1 đoạn hội thoại hoặc 1 video tiếng anh rồi trả lời các câu hỏi bằng cách chọn các đáp án đúng.
-  + Kiểm tra chung: vượt qua các bài lý thuyết cơ bản trên học sinh mới có thể làm bài test này.
-  + Luyện tập qua các trò chơi(tích hợp) 
-  + Chức năng comment facebook dưới mỗi câu hỏi để thảo luận ý kiến.
+# Teaching English For Children
+ Teaching English For Children là web dạy tiếng anh cơ bản cho trẻ em. Trang web sẽ hỗ trợ các em về việc học tiếng anh hàng ngày, từ phát âm cơ bản, nhận diện âm tiết và các từ qua những hình ảnh minh họa cụ thể, luyện tập khả năng nghe tiếng anh qua các audio chuẩn, đồng thời cũng sẽ có các bài thực hành ngay sau mỗi bài học cho các em có thể kiểm tra trình độ của mình sau các chủ đề đã học. 
+ Teaching English sẽ sử dụng ngôn ngữ lập trình PHP với Framework Laravel, hệ quản trị cơ sở dữ liệu sẽ sử dụng là MySQL, với các chức năng chính để giải quyết cho các vấn đề trên:
+  + Chức năng nghe
+  + Chức năng nói
+  + Chức năng viết
+  + Kiểm tra tổng hợp: vượt qua các bài học cơ bản trên các em mới có thể làm bài test này.
+  + Kết hợp vừa chơi vừa học qua các trò chơi, bài hát.

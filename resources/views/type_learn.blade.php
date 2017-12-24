@@ -1,15 +1,7 @@
-
-<!DOCTYPE html>
-<html>
-<head>
+@extends('header')
+@section('content')
 	<title>Type 1</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
 	<style type="text/css">
 		a:hover{
 			text-decoration: none;
@@ -35,35 +27,29 @@
 		  height: 5px;
 		  background-color: #4CAF50;
 		}
+	
+		.as_1:hover{
+			border: 2px solid #1caff6 !important;
+		}
+		.as_ra{
+			border: 2px solid #dadada;
+			font-size: 20px;
+			height: 19px;
+			line-height: 19px;
+			width: 19px;
+		}
+	
+		.as_1{
+			margin-right: 10px;
+		}
+		.as_2 span{
+			font-size: 18px;
+			color: #3c3c3c;
+		}
+		.itemSpanStyle{
+			color: red;
+		}
 	</style>
-</head>
-<body>
-
-		
-			<style type="text/css">
-				
-				.as_1:hover{
-					border: 2px solid #1caff6 !important;
-				}
-				.as_ra{
-				    border: 2px solid #dadada;
-				    font-size: 20px;
-				    height: 19px;
-				    line-height: 19px;
-				    width: 19px;
-				}
-			
-				.as_1{
-					margin-right: 10px;
-				}
-				.as_2 span{
-					font-size: 18px;
-					color: #3c3c3c;
-				}
-				.itemSpanStyle{
-					color: red;
-				}
-			</style>
 	<div class="col-md-12" style="padding: 0px;">
 		
 		<div ng-app="myApp" ng-controller="personCtrl" class="col-md-12" style="">
@@ -332,5 +318,4 @@
 			
 		});
 		</script>
-</body>
-</html>
+@endsection

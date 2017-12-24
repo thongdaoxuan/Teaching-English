@@ -1,10 +1,8 @@
 @extends('header')
 @section('content')
-	<title>Teaching-English</title>
+	<title>Choose Category</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	<style type="text/css">
 		a:hover{
 			text-decoration: none;
@@ -17,18 +15,9 @@
 		.nav li a:hover,.nav li a:visited ,.nav li a:active{
 			    background-color: rgb(20, 147, 209);
 		}
-
 	</style>
 
-
-
 	 <div class="col-md-12" style="padding: 0px;">
-	 
-		<div class="col-md-12" style="background-color: #34b1ee;border-bottom: 1px solid #ccc;">
-			
-			
-		</div>
-		
 		<div class="container" style="">
 			<div class="col-md-12" style="padding: 15px ;">
 			<!--begin-->
@@ -52,42 +41,7 @@
 						</div>
 					</a>
 				</div>
-				<div class="col-md-4" style="padding: 10px;">
-					<a href="">
-						<div class="col-md-12" style="padding: 15px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);">
-							<div class="col-md-6" style="padding: 15px 0px;">
-								<img src="resources/assets/images/1405503301_tienganhtreem_3.jpg" class="img-circle" alt="Cinque Terre" style="height: 150px; width: 150px;">
-							</div>
-							<div class="col-md-6" style="padding: 0px 5px;">
-								<h4>Chủ đề: Động vật</h4>
-								<span>Abalone :bào ngư <br/>
-									Aligator :cá sấu nam mỹ<br/>
-									Anteater :thú ăn kiến<br/>
-									Armadillo :con ta tu<br/>
-								</span>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-4" style="padding: 10px;">
-					<a href="">
-						<div class="col-md-12" style="padding: 15px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 1px 15px rgba(0,0,0,.2);">
-							<div class="col-md-6" style="padding: 15px 0px;">
-								<img src="resources/assets/images/1405503301_tienganhtreem_3.jpg" class="img-circle" alt="Cinque Terre" style="height: 150px; width: 150px;">
-							</div>
-							<div class="col-md-6" style="padding: 0px 5px;">
-								<h4>Chủ đề: Động vật</h4>
-								<span>Abalone :bào ngư <br/>
-									Aligator :cá sấu nam mỹ<br/>
-									Anteater :thú ăn kiến<br/>
-									Armadillo :con ta tu<br/>
-								</span>
-							</div>
-						</div>
-					</a>
-				</div>
-				
-				<!--end-->
+		<!--end-->
 			</div>
 		</div>
 	</div>

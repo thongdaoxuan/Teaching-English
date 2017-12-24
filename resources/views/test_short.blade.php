@@ -1,17 +1,8 @@
 
-<!DOCTYPE
- html>
-<html>
-<head>
+@extends('header')
+@section('content')
 	<title>Short Test</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('public/css/glyphicon.css') }}">
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
 	<style type="text/css">
 		a:hover{
 			text-decoration: none;
@@ -41,8 +32,7 @@
 			
 		}
 	</style>
-</head>
-<body>
+
 
 	 <div ng-app="testShort" ng-controller="testCtrl" class="col-md-12" style="padding: 0px;">
 		<div class="container" ng-if="questions.length>0" style="">
@@ -242,5 +232,4 @@
 			
 		});
 		</script>
-</body>
-</html>
+@endsection

@@ -246,6 +246,7 @@
 			};
 			$scope.generateQuestion=function(){
 				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
+				console.log($scope.itemQuestion);
 				$scope.itemQuestion.answers=JSON.parse("["+$scope.itemQuestion.answers+"]");
 				
 				for(var i=0;i<$scope.itemQuestion.answers.length;i++){

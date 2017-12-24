@@ -11,9 +11,10 @@
 |
 */
 use App\Question;
+use App\Answer;
 
 Route::get('/', function () {
-	//echo Question::all();
+	//echo Answer::all();
 	return view('welcome');
 });
 

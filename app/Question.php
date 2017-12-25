@@ -11,7 +11,7 @@ class Question extends Model
 {
     //
 	protected $table = 'question';
-	protected $fillable =  ['qu_id', 'qu_content','qu_image','qu_audio','qu_type','ca_id','qu_created_at', 'qu_updated_at'];
+	protected $fillable =  ['qu_id', 'qu_content','qu_image','qu_audio','qu_type','ca_id','created_at', 'updated_at'];
 	
     protected $primaryKey = 'qu_id';
 	

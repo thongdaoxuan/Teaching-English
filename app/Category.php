@@ -10,7 +10,7 @@ class Category extends Model
 {
     //
 	protected $table = 'category';
-	protected $fillable =  ['ca_id', 'ca_note','ca_name','ca_created_at', 'ca_updated_at'];
+	protected $fillable =  ['ca_id', 'ca_note','ca_name','created_at', 'updated_at'];
 	
     protected $primaryKey = 'ca_id';
 	

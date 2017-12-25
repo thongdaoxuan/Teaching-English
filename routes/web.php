@@ -69,8 +69,4 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
 	Route::resource('categories','CategoryController');
 	Route::resource('questions','QuestionController');
 	Route::resource('answer','AnswerController');
-	Route::get('/questions/create','CategoryController@sendToQuestion');
-	Route::get('/questions/createAnswer','QuestionController@createAnswer');
-	Route::post('/questions', 'QuestionController@upload');
-	Route::post('/answers','QuestionController@addAnswer');
 });

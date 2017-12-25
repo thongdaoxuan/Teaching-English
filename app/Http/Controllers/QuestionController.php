@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use App\Category;
 use DB;
+use Illuminate\Support\Facades\Input;
+use Carbon\Carbon; 
 
 class QuestionController extends Controller
 {
@@ -17,90 +20,131 @@ class QuestionController extends Controller
     }
     public function create()
     {
-        return view('questions.create');
-
+       
+		$categories = Category::all();
+        return View('questions.create')
+            ->with('categories', $categories);
     }
 
-    public function upload( Request $request)
+    public function store( Request $request)
     {
-        $this->validate($request, [
+		$this->validate($request, [
             'qu_content' => 'required',
-            'qu_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'qu_audio' => 'required',
+            'ca_id' => 'required',
+            'qu_type' => 'required',
         ]);
+		$pathImage="";
+		$pathAudio="";
+		if($request->hasFile('qu_image')) {
+			
+			$file =Input::file('qu_image');
+			//getting timestamp
+			$timestamp = str_replace([' ', ':','-'], '', Carbon::now()->toDateTimeString());
+			
+			$extension = $file->getClientOriginalExtension();
+			if(!$this->validateExtImage($extension)){
+				return Redirect::back()->with('error', 'Cập nhật thất bại!');
+			}
+			$name =$timestamp.'.'.$extension;
+			$destinationPath =   "/images/";		
+			$file->move(public_path($destinationPath), $name);
+			$pathImage=$destinationPath.$name;
+		
+			
+		}
+		if($request->hasFile('qu_audio')) {
+			
+			$file =Input::file('qu_audio');
+			//getting timestamp
+			$timestamp = str_replace([' ', ':','-'], '',Carbon::now()->toDateTimeString());
+			
+			$extension = $file->getClientOriginalExtension();
+			if(!$this->validateExtAudio($extension)){
+				return Redirect::back()->with('error', 'Cập nhật thất bại!');
+			}
+			$name =$timestamp.'.'.$extension;
+			$destinationPath =   "/audios/";		
+			$file->move(public_path($destinationPath), $name);
+			$pathAudio=$destinationPath.$name;
+			
+		}
         $input['qu_content'] = $request->qu_content;
-        $a = "/images/".time().'.'.$request->qu_image->getClientOriginalExtension();
-        $b = time().'.'.$request->qu_image->getClientOriginalExtension();
-        $input['qu_image'] = $a;
-        $request->qu_image->move(public_path('images'), $b);
-        $c = "/audios/".time().'.'.$request->qu_audio->getClientOriginalExtension();
-        $d = time().'.'.$request->qu_audio->getClientOriginalExtension();
-        $input['qu_audio'] = $c;
-        $request->qu_audio->move(public_path('audios'), $d);
-        $input['qu_type'] = 1;
-
-
-        $input['ca_id'] = $request->qu_id;
-
+        $input['qu_image'] = $pathImage;
+        $input['qu_audio'] = $pathAudio;
+        $input['qu_type'] = $request->qu_type;;
+        $input['ca_id'] = $request->ca_id;
         Question::create($input);
-
-
-        return back()
-            ->with('success','Image Uploaded successfully.');
+        return redirect()->route('questions.index')
+                         ->with('success','Category create successfully');
     }
     public function edit($id)
     {
-        $questions = Question::find($id);
-        return view('questions.edit',compact('question'))->with('questions', $questions);
+		$categories = Category::all();
+        $question = Question::find($id);
+        return view('questions.edit',compact('question','categories'));
     }
-    public function addAnswer(Request $request){
-            $a = "/images/".time().'a'.'.'.$request->an_image->getClientOriginalExtension();
-            $b = time().'a'.'.'.$request->an_image->getClientOriginalExtension();
-            $request->an_image->move(public_path('images'), $b);
-            $c = "/audios/".time().'a'.'.'.$request->an_audio->getClientOriginalExtension();
-            $d = time().'a'.'.'.$request->an_audio->getClientOriginalExtension();
-            $request->an_audio->move(public_path('audios'), $d);
-
-            $a1 = "/images/".time().'b'.'.'.$request->an_image1->getClientOriginalExtension();
-            $b1 = time().'b'.'.'.$request->an_image1->getClientOriginalExtension();
-            $request->an_image1->move(public_path('images'), $b1);
-            $c1 = "/audios/".time().'b'.'.'.$request->an_audio1->getClientOriginalExtension();
-            $d1 = time().'b'.'.'.$request->an_audio1->getClientOriginalExtension();
-            $request->an_audio1->move(public_path('audios'), $d1);
-
-            $a2 = "/images/".time().'c'.'.'.$request->an_image2->getClientOriginalExtension();
-            $b2 = time().'c'.'.'.$request->an_image2->getClientOriginalExtension();
-            $request->an_image2->move(public_path('images'), $b2);
-            $c2 = "/audios/".time().'c'.'.'.$request->an_audio2->getClientOriginalExtension();
-            $d2 = time().'c'.'.'.$request->an_audio2->getClientOriginalExtension();
-            $request->an_audio2->move(public_path('audios'), $d2);
-        DB::table('answer')->insert(array(
-            array("an_content"=>$request->an_content,
-                "an_image"=>$a,
-                "an_audio" =>$c,
-                "an_spell" => $request->an_spell,
-                "an_type" => 1,
-                "qu_id" => $request->qu_id,
-                "an_correct" =>$request->an_correct
-                ),
-            array("an_content"=>$request->an_content1,
-                "an_image"=>$a1,
-                "an_audio" =>$c1,
-                "an_spell" =>$request->an_spell1,
-                "an_type" => 1,
-                "qu_id" => $request->qu_id,
-                "an_correct" =>$request->an_correct1
-            ),
-            array("an_content"=>$request->an_content2,
-                "an_image"=>$a2,
-                "an_audio" =>$c2,
-                "an_spell" =>$request->an_spell2,
-                "an_type" => 1,
-                "qu_id" => $request->qu_id,
-                "an_correct" =>$request->an_correct2
-            ),
-        ));
-        return back()
-            ->with('success','Image Uploaded successfully.');
+	public function update(Request $request, $qu_id)
+    {
+		$this->validate($request, [
+            'qu_content' => 'required',
+            'ca_id' => 'required',
+            'qu_type' => 'required',
+        ]);
+		
+		$input['qu_content'] = $request->qu_content;
+        $input['qu_type'] = $request->qu_type;;
+        $input['ca_id'] = $request->ca_id;
+		if($request->hasFile('qu_image')) {
+			
+			$file =Input::file('qu_image');
+			//getting timestamp
+			$timestamp = str_replace([' ', ':','-'], '', Carbon::now()->toDateTimeString());
+			
+			$extension = $file->getClientOriginalExtension();
+			if(!$this->validateExtImage($extension)){
+				return Redirect::back()->with('error', 'Cập nhật thất bại!');
+			}
+			$name =$timestamp.'.'.$extension;
+			$destinationPath =   "/images/";		
+			$file->move(public_path($destinationPath), $name);
+			$input['qu_image']=$destinationPath.$name;
+		
+			
+		}
+		if($request->hasFile('qu_audio')) {
+		
+			$file =Input::file('qu_audio');
+			//getting timestamp
+			$timestamp = str_replace([' ', ':','-'], '',Carbon::now()->toDateTimeString());
+			
+			$extension = $file->getClientOriginalExtension();
+			if(!$this->validateExtAudio($extension)){
+				return Redirect::back()->with('error', 'Cập nhật thất bại!');
+			}
+			$name =$timestamp.'.'.$extension;
+			$destinationPath =   "/audios/";		
+			$file->move(public_path($destinationPath), $name);
+			$input['qu_audio']=$destinationPath.$name;
+			
+		}
+        
+       
+        Question::find($qu_id)->update($input);
+        return redirect()->route('questions.index')
+                        ->with('success','Questions updated successfully');
+    }
+   
+	 /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($qu_id)
+    {
+        Answer::where('qu_id',$qu_id)->delete();
+        Question::find($qu_id)->delete();
+        return redirect()->route('questions.index')
+                        ->with('success','Questions deleted successfully');
     }
 }

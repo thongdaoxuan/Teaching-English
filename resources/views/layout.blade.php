@@ -126,7 +126,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="{{ route('questions.index') }}">Questions</a></li>
-                        <li><a class="" href="">Add</a></li>
+                        <li><a class="" href="{{ route('questions.create') }}">Add</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

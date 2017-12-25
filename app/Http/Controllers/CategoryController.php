@@ -6,11 +6,7 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-    public function sendToQuestion(){
-        $categories = Category::all();
-        return View('questions.create')
-            ->with('categories', $categories);
-    }
+  
     public function index()
     {
          $categories = Category::latest()->paginate(5);

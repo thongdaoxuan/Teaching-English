@@ -17,7 +17,7 @@
                 Advanced Table
             </header>
             <div >
-                <a class="btn btn-primary" href='questions/create' data-toggle="modal">
+                <a class="btn btn-primary" href="{{ route('questions.create') }}" >
                     Add Question
                 </a>
             </div>
@@ -37,10 +37,10 @@
                 <tr>
 
                     <td>{{$question->qu_content}}</td>
-                    <td><img src="{{ $question->qu_image }}" style="width : 100px; height : 100px"></td>
+                    <td><img src="{{ asset('public/'.$question->qu_image) }}" style="width : 100px; height : 100px"></td>
                     <td>
                         <audio controls>
-                            <source src="{{ $question->qu_audio }}" type="audio/ogg">
+                            <source src="{{ asset('public/'.$question->qu_audio) }}" type="audio/ogg">
                         </audio>
                     </td>
 
@@ -50,14 +50,15 @@
                     <td>
                         <div class="btn-group">
 
-                            <a class="btn btn-success" href=""><i class="icon_pencil"></i></a>
-                            <a class="btn btn-danger" href="" onclick="return confirm('Are you sure you want to delete this item?');"><i class="icon_close_alt2"></i></a>
-
+                            <a class="btn btn-success" href='{{ route('questions.edit',$question->qu_id) }}'><i class="icon_pencil"></i></a>
+                            {!! Form::open(['method' => 'DELETE','route' => ['questions.destroy', $question->qu_id],'style'=>'display:inline']) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
                         </div>
                     </td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-primary" href='{{ route('questions.edit',$question->qu_id) }}'>AddAnswer</a>
+                            <a class="btn btn-primary" href='{{ route('answer.edit',$question->qu_id) }}'>Edit Answer</a>
                         </div>
                     </td>
                 </tr>

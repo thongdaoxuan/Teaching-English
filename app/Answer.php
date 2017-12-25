@@ -9,7 +9,7 @@ class Answer extends Model
 {
     //
 	protected $table = 'answer';
-	protected $fillable =  ['an_id', 'an_content','an_image','an_audio','an_type','an_spell','an_correct','qu_id','an_created_at', 'an_updated_at'];
+	protected $fillable =  ['an_id', 'an_content','an_image','an_audio','an_type','an_spell','an_correct','qu_id','created_at', 'updated_at'];
 	
     protected $primaryKey = 'an_id';
 	

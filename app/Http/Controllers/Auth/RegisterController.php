@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use DateTime;
 class RegisterController extends Controller
 {
     /*
@@ -62,10 +63,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create(array(
             'name' => $data['name'],
+            'full_name' => $data['full_name'],
             'email' => $data['email'],
+            'last_signed_on' => new DateTime('today'),
+            'is_admin' => 1,
             'password' => bcrypt($data['password']),
-        ]);
+        ));
     }
 }

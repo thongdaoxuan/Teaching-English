@@ -81,7 +81,7 @@
 						<div class="col-md-1"></div>
 						<div ng-repeat="answer in itemQuestion.answers" class="col-md-3 as_1" style="border: 2px solid #dadada;color: #3c3c3c;border-radius: 10px;font-size: 15px;">
 							<div class="col-md-12" style="padding: 10px 0px;">
-								<img ng-src="[[answer.an_image]]" style="width: 140px; height: 200px;"/>
+								<img ng-src="[[answer.an_image]]" style="width: 100%; height: 200px;"/>
 							</div>
 							<div class="col-md-12 radio" style="text-align: left;">
 							    <label ng-click="answerTrueFalseQuestion(itemQuestion.answers,answer.an_id,$index);">
@@ -245,7 +245,7 @@
 			};
 			$scope.generateQuestion=function(){
 				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
-				console.log($scope.itemQuestion);
+				//console.log($scope.itemQuestion);
 				$scope.itemQuestion.answers=JSON.parse("["+$scope.itemQuestion.answers+"]");
 				
 				for(var i=0;i<$scope.itemQuestion.answers.length;i++){

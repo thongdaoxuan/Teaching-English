@@ -12,7 +12,6 @@
 */
 use App\Question;
 use App\Answer;
-
 Route::get('/', function () {
 	//echo Answer::all();
 	return view('welcome');
@@ -55,3 +54,22 @@ Route::get('/see-leanr', function () {
 
 Route::get('home/{ca_id}', 'TestController@index');
 Route::get('test/{ca_id}', 'TestController@testShort');
+
+Route::get('admin/', function () {
+    //echo Question::all();
+    return view('/auth/login');
+});
+
+Auth::routes();
+Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
+	
+	Route::get('home', 'TestController@index');
+	Auth::routes();
+	Route::resource('categories','CategoryController');
+	Route::resource('questions','QuestionController');
+	Route::resource('answer','AnswerController');
+	Route::get('/questions/create','CategoryController@sendToQuestion');
+	Route::get('/questions/createAnswer','QuestionController@createAnswer');
+	Route::post('/questions', 'QuestionController@upload');
+	Route::post('/answers','QuestionController@addAnswer');
+});

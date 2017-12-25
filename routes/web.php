@@ -14,7 +14,7 @@ use App\Question;
 use App\Answer;
 Route::get('/', function () {
 	//echo Answer::all();
-	return view('welcome');
+	return Redirect::to('/choose-category');
 });
 
 Route::get('/choose-category', function () {
@@ -52,7 +52,7 @@ Route::get('/see-leanr', function () {
 	return view('see_again_learn');
 });
 
-Route::get('home/{ca_id}', 'TestController@index');
+Route::get('learn/{ca_id}', 'TestController@index');
 Route::get('test/{ca_id}', 'TestController@testShort');
 
 Route::get('admin/', function () {
@@ -60,11 +60,12 @@ Route::get('admin/', function () {
     return view('/auth/login');
 });
 
+
+Route::get('home', 'TestController@welcome');
 Auth::routes();
 Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
 	
-	Route::get('home', 'TestController@index');
-	Auth::routes();
+	Route::resource('','CategoryController');
 	Route::resource('categories','CategoryController');
 	Route::resource('questions','QuestionController');
 	Route::resource('answer','AnswerController');

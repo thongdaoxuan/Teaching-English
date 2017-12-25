@@ -32,5 +32,10 @@ class TestController extends Controller
 		
 		return view('test_short',['ca_id'=>$ca_id]);
     }
+	public function welcome()
+    {
+		
+		return view('welcome');
+    }
 	
 }

@@ -235,7 +235,7 @@
 			} ;
 			$scope.getAllQuestion = function() {
 
-				var url = "http://localhost:8080/TeachingEnglish/api/get-question/"+jsvar;
+				var url = "/api/get-question/"+jsvar;
 
 				$http.get(url).then( function(response) {
 					$scope.questions = response.data;
@@ -244,7 +244,15 @@
 				$scope.reloadProgressBar();
 			};
 			$scope.generateQuestion=function(){
+				if($scope.questions.length<=$scope.indexQuestion){
+					return;
+				}
 				$scope.itemQuestion=$scope.questions[$scope.indexQuestion];
+				if(($scope.itemQuestion.answers==undefined)||
+					($scope.itemQuestion.answers==null )||
+					($scope.itemQuestion.answers.length<3 )){
+					return;
+				}
 				//console.log($scope.itemQuestion);
 				$scope.itemQuestion.answers=JSON.parse("["+$scope.itemQuestion.answers+"]");
 				
